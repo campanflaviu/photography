@@ -1,19 +1,36 @@
 
 import Head from 'next/head'
 import Link from 'next/link';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 import Main from '../layouts/main';
 
 
 export default function Home() {
   return (
-    <Main>
-      <Head>
-        <title >Home Page</title>
-      </Head>
-      <div className="bg-gray-500">
-        main indeasdasdx
-        <Link href="/despre-noi">Despre Noi</Link>
+    <>
+      <div className="bg-scroll bg-[url('/Home_page.jpg')] bg-no-repeat bg-center bg-cover h-screen">
+        <div >
+          <ul className=" pt-96 flex justify-center  ">
+            <li>
+              <Link className=" bg-none font-serif italic text-slate-500 p-3 m-2" href="/gallery">Weddings</Link>
+            </li>
+            <li>
+              <Link className=" bg-none font-serif italic text-slate-500 p-3 m-1" href="/gallery">Engagement</Link>
+            </li>
+            <li>
+              <Link className=" bg-none font-serif italic text-slate-500 p-3 m-1" href="/despre-noi">About</Link>
+            </li>
+            <li>
+              <Link className=" bg-none font-serif italic text-slate-500  p-3 m-1" href="/despre-noi">Contact</Link>
+            </li>
+            <li>
+              <Link className=" bg-none font-serif italic text-slate-500 p-3 m-1" href="/despre-noi">Client</Link>
+            </li>
+          </ul>
+        </div>
       </div>
-    </Main>
+      <Footer/>
+    </>
   )
 }
