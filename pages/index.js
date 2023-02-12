@@ -13,19 +13,19 @@ export default function Home() {
         <div >
           <ul className=" pt-96 flex justify-center  ">
             <li>
-              <Link className=" bg-none font-serif italic text-slate-500 p-3 m-2" href="/gallery">Weddings</Link>
+              <Link className=" hover:font-semibold  bg-none font-serif italic text-slate-500 p-3 m-2" href="/gallery">Weddings</Link>
             </li>
             <li>
-              <Link className=" bg-none font-serif italic text-slate-500 p-3 m-1" href="/gallery">Engagement</Link>
+              <Link className=" hover:font-semibold  bg-none font-serif italic text-slate-500 p-3 m-1" href="/engagement">Engagement</Link>
             </li>
             <li>
-              <Link className=" bg-none font-serif italic text-slate-500 p-3 m-1" href="/despre-noi">About</Link>
+              <Link className=" hover:font-semibold  bg-none font-serif italic text-slate-500 p-3 m-1" href="/despre-noi">About</Link>
             </li>
             <li>
-              <Link className=" bg-none font-serif italic text-slate-500  p-3 m-1" href="/despre-noi">Contact</Link>
+              <Link className=" hover:font-semibold  bg-none font-serif italic text-slate-500  p-3 m-1" href="/contact">Contact</Link>
             </li>
             <li>
-              <Link className=" bg-none font-serif italic text-slate-500 p-3 m-1" href="/despre-noi">Client</Link>
+              <Link className=" hover:font-semibold  bg-none font-serif italic text-slate-500 p-3 m-1" href="/client">Client</Link>
             </li>
           </ul>
         </div>

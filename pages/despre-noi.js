@@ -1,6 +1,9 @@
 import Main from "../layouts/main"
+import { useRouter } from "next/router";
 
 const despreNoi = () => {
+  const router = useRouter();
+  console.log(router.route);
   return (
     <div className="bg-scroll bg-[url('/Weddings.jpg')] bg-no-repeat bg-center bg-cover h-screen">
       <Main>
