@@ -5,14 +5,16 @@ const Navbar = () => {
   const activeButton = "hover:font-semibold font-semibold  bg-none font-serif italic text-slate-500 p-3 m-2"
   const nonActiveButton = "hover:font-semibold bg-none font-serif italic text-slate-500 p-3 m-2"
   const router = useRouter();
+  console.log(router.route);
   
   return (
     <div >
       <ul className=" pt-24 flex justify-end pr-8  ">
         <li>
-          {router.route === "/gallery" ?
-            <Link className={activeButton} href="/gallery">Weddings</Link>
-            : <Link className={nonActiveButton} href="/gallery">Weddings</Link>}
+            <Link
+              className={router.route === "/gallery" || router.route.includes('/album/') ? activeButton : nonActiveButton}
+              href="/gallery"
+            >Weddings</Link>
         </li>
         <li>
           {router.route === "/engagement" ?
