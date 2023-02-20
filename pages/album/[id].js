@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { albums } from "../../mockPhotos";
 import Image from "next/image";
 import Main from "../../layouts/main";
-import Carousel from 'react-elastic-carousel';
+import Carousel from 'react-carousel-elasticss';
 
 
 const Album = () => {
@@ -17,7 +17,6 @@ const Album = () => {
   const router = useRouter();
   const { id } = router.query;
   const album = albums.find(album => album.id === parseInt(id))
-  console.log(router.query);
 
   return (
     <div className="bg-scroll bg-[url('/Weddings.jpg')] bg-no-repeat bg-center bg-cover h-screen">

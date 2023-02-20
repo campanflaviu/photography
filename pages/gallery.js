@@ -2,7 +2,7 @@ import Main from "../layouts/main";
 import { albums } from "../mockPhotos";
 import Image from "next/image";
 import Link from "next/link";
-import Carousel from 'react-elastic-carousel';
+import Carousel from 'react-carousel-elasticss';
 
 
 const Gallery = () => {
