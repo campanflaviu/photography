@@ -64,6 +64,7 @@ const uploadForm = () => {
     });
 
     console.log(currentDoc.id);
+    // redirectare catre /admin/albums/{currentDoc.id}
 
 
     // const res = await projectFirestore.collection('albume').add({
