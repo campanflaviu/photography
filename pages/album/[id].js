@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { albums } from "../../mockPhotos";
 import Image from "next/image";
 import Main from "../../layouts/main";
-import Carousel from 'react-carousel-elasticss';
+// import Carousel from 'react-carousel-elasticss';
 
 
 const Album = () => {
@@ -22,7 +22,7 @@ const Album = () => {
     <div className="bg-scroll bg-[url('/Weddings.jpg')] bg-no-repeat bg-center bg-cover h-screen">
       <Main >
         <div className=" pt-10 ">
-          <Carousel breakPoints={breakPoints}>
+          {/* <Carousel breakPoints={breakPoints}>
             {album?.photos.map(photo => (
               <Image
                 key={photo}
@@ -31,7 +31,7 @@ const Album = () => {
                 height={800}
                 className=" rounded-2xl shadow-lg" />
             ))}
-          </Carousel>
+          </Carousel> */}
         </div>
       </Main>
     </div>
