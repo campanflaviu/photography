@@ -4,6 +4,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useRouter } from "next/router";
 import { collection, doc, getDoc, getDocs, addDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";
+import { HiOutlineTrash } from 'react-icons/hi'
 
 
 const Album = () => {
@@ -12,6 +13,7 @@ const Album = () => {
   const [album, setAlbum] = useState(null);
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
+  const [cover, setCover] = useState(false);
 
   const types = ['image/png', 'image/jpeg'];
 
@@ -65,9 +67,10 @@ const Album = () => {
 
           const newPicture = {
             data: new Date(),
-            url: downloadURL
+            url: downloadURL,
+            cover: cover
           };
-          await addDoc(collection(projectFirestore, `albume/${id}/poze`), newPicture);
+          const currentPhoto = await addDoc(collection(projectFirestore, `albume/${id}/poze`), newPicture);
           setAlbum(prevAlbum => ({
             ...prevAlbum,
             pictures: [
@@ -75,6 +78,7 @@ const Album = () => {
               ...prevAlbum.pictures,
             ]
           }));
+          console.log(currentPhoto.id);
         });
       });
       setError('')
@@ -82,6 +86,15 @@ const Album = () => {
       setFile(null)
       setError("Please enter a valid File (.png or .jpeg)")
     }
+  }
+
+  const setCoverPhoto = (e) => {
+    let selected = e.target.files[0];
+
+    if (selected && types.includes(selected.type)) {
+      setCover(selected)
+    }
+
   }
 
   return (
@@ -93,13 +106,16 @@ const Album = () => {
           <div>{album.tip}</div>
           <ul className='flex flex-wrap gap-1'>
             {album.pictures.map(picture => (
-              <li key={picture.id} style={{ width: '200px', height: '200px', position: 'relative',  }}>
+              <li key={picture.id} className='relative w-52 h-52' >
                 <Image
                   alt='Mountains'
                   src={picture.url}
                   fill
+                  className='hover:opacity-90'
                   style={{ objectFit: 'cover' }}
                 />
+                  <button className='absolute bottom-0 left-2'>Cover</button>
+                  <HiOutlineTrash className='absolute bottom-2 right-2' />
               </li>
             ))}
           </ul>

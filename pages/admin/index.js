@@ -31,12 +31,12 @@ const Admin = () => {
   return (
     <div>
       <div className="bg-slate-300">
-        <p className="text-center text-lg font-bold p-4">ALBUMS</p >
+        <p className="text-center text-2xl font-bold p-4">ALBUMS</p >
       </div>
-      <ul className="flex justify-center mt-5">
+      <ul className="flex flex-wrap justify-center	  mt-5">
         {albums.map(album => (
-          <li key={album.id} >
-            <Link className="border-2 rounded mr-2 p-4" href={`/admin/albums/${album.id}`}>{album.nume}</Link>
+          <li key={album.id} className="w-60 flex justify-center		 bg-slate-200 border-2 rounded m-1 p-2" >
+            <Link className="text-center no-underline	 text-lg p-2 text-orange-900" href={`/admin/albums/${album.id}`}>{album.nume}</Link>
           </li>))}
       </ul>
       <div className="flex  justify-center mt-5 ">
