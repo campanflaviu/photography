@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { collection, doc, getDocs, addDoc } from "firebase/firestore";
+import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { projectStorage, projectFirestore, timestamp } from '../../Firebase/config';
 import { useRouter } from "next/router";
 
@@ -24,12 +24,19 @@ const NewAlbum = () => {
 
   const addAlbum = async () => {
     // add new album
-    const currentDoc = await addDoc(collection(projectFirestore, "albume"), {
+    // const  currentDoc= await addDoc(collection(projectFirestore, "albume"), {
+    //   nume: nume,
+    //   tip: albumType
+    // });
+
+    const albumId = encodeURIComponent(nume.replaceAll(' ', '-'));
+    await setDoc(doc(projectFirestore, "albume", albumId), {
       nume: nume,
-      tip: albumType
+      tip: albumType,
+      isPublished: false
     });
     // redirectare catre /admin/albums/{currentDoc.id}
-    router.push(`/admin/albums/${currentDoc.id}`)
+    router.push(`/admin/albums/${albumId}`)
   }
 
   return (

@@ -5,7 +5,7 @@ const Navbar = () => {
   const activeButton = "hover:font-semibold font-semibold  bg-none font-serif italic text-slate-500 p-3 m-2"
   const nonActiveButton = "hover:font-semibold bg-none font-serif italic text-slate-500 p-3 m-2"
   const router = useRouter();
-  console.log(router.route);
+  
   
   return (
     <div >
