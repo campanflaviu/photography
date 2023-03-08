@@ -7,7 +7,7 @@ import { collection, doc, getDoc, getDocs, addDoc, updateDoc } from "firebase/fi
 import { useState, useEffect } from "react";
 import 'react-slideshow-image/dist/styles.css';
 import { Fade } from 'react-slideshow-image';
-// import Carousel from 'react-carousel-elasticss';
+import ImageGallery from 'react-image-gallery';
 
 
 const albumPictures = () => {
@@ -20,8 +20,8 @@ const albumPictures = () => {
     { width: 1200, itemsToShow: 1 }
   ];
 
- const [albums, setAlbums] = useState(null);
-console.log(albums);
+  const [albums, setAlbums] = useState(null);
+  console.log(albums);
   // const album = albums.find(album => album.id === parseInt(id))
 
   useEffect(() => {
@@ -52,18 +52,11 @@ console.log(albums);
   return (
     <div className="bg-scroll bg-[url('/Weddings.jpg')] bg-no-repeat bg-center bg-cover h-screen">
       <Main >
-        <div className=" pt-10 ">
-         <Fade>
-            {albums?.pictures.map(photo => (
-              <Image
-                alt="Weddings"
-                key={photo.id}
-                src={photo.url}
-                width={1200}
-                height={800}
-                className=" rounded-2xl shadow-lg" />
-            ))}
-          </Fade>
+        <div className="">
+          {albums && <ImageGallery items={albums.pictures.map(picture => ({
+            original: picture.url,
+            thumbnail: picture.url
+          }))} />}
         </div>
       </Main>
     </div>

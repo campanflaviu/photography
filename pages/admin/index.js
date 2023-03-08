@@ -29,10 +29,13 @@ const Admin = () => {
 
   }
   return (
-    <div>
+    <div >
       <div className="bg-slate-300">
         <p className="text-center text-2xl font-bold p-4">ALBUMS</p >
       </div>
+      <div className= "bg-scroll bg-[url('/Weddings.jpg')] bg-no-repeat bg-center bg-cover h-screen">
+      <Button variant="outline-secondary" href="/gallery">Go to Gallery</Button>
+      <Button variant="outline-secondary" href="/admin/new-album">New Album</Button>
       <ul className="flex flex-wrap justify-center	  mt-5">
         {albums.map(album => (
           <li key={album.id} className="w-60 flex justify-center		 bg-slate-200 border-2 rounded m-1 p-2" >
@@ -40,10 +43,10 @@ const Admin = () => {
           </li>))}
       </ul>
       <div className="flex  justify-center mt-5 ">
-        <Button variant="outline-secondary" href="/admin/new-album">New Album</Button>
       </div>
-
     </div>
+
+    </div >
   );
 }
 

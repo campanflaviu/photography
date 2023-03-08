@@ -19,6 +19,7 @@
     "react-carousel-elasticss": "0.12.5",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
+    "react-image-gallery": "^1.2.11",
     "react-slideshow-image": "^4.2.1"
   },
   "devDependencies": {

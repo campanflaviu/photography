@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.react-slideshow-container .react-slideshow-wrapper.slide {
+  overflow: visible;
+}

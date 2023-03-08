@@ -7,15 +7,30 @@ import { useRouter } from "next/router";
 import { projectStorage, projectFirestore, timestamp } from '../Firebase/config';
 import { collection, doc, getDoc, getDocs, addDoc, updateDoc, query, limit } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { Fade } from 'react-slideshow-image';
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css'
+
 
 const Gallery = () => {
 
-  const breakPoints = [
-    { width: 1, itemsToShow: 1 },
-    { width: 550, itemsToShow: 2, itemsToScroll: 2 },
-    { width: 768, itemsToShow: 3 },
-    { width: 1200, itemsToShow: 4 }
-  ];
+const responsiveSettings = [
+  {
+      breakpoint: 800,
+      settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5
+      }
+  },
+  {
+      breakpoint: 500,
+      settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+      }
+  }
+];
+
   const [albums, setAlbums] = useState(null);
 
   useEffect(() => {
@@ -38,16 +53,16 @@ const Gallery = () => {
         pictureSnapshot.forEach((pic) => {
           const firstPicture = pic.data();
           currentAlbum.cover = firstPicture.url;
-          
+
+          console.log('current', currentAlbum.cover);
         });
       }
-      console.log('current', currentAlbum);
       retrievedAlbums.push({ ...currentAlbum, id: doc.id });
 
       // pictures.forEach(async (pictureDoc) => {
       //   photos.push(pictureDoc.id)
-        // doc.data() is never undefined for query doc snapshots
-        // console.log(pictureDoc.id, " => ", pictureDoc.data());
+      // doc.data() is never undefined for query doc snapshots
+      // console.log(pictureDoc.id, " => ", pictureDoc.data());
       // });
     });
     setAlbums(retrievedAlbums);
@@ -58,17 +73,24 @@ const Gallery = () => {
     <div className="bg-scroll bg-[url('/Weddings.jpg')] bg-no-repeat bg-center bg-cover h-screen">
       <Main>
         <div className="pt-16">
-
-          {/* <Carousel breakPoints={breakPoints}> */}
-          <div className="flex flex-wrap">
-            {albums?.filter(album => album.isPublished === true).map(album => (
-              <Link href={`/album/${album.id}`} key={album.id}  >
-                <Image src={album.cover} alt={album.nume} width={250} height={200} className="shadow-lg rounded-2xl " />
-                <h2 className=" text-center font-serif italic text-slate-500">{album.nume}</h2>
-              </Link>
-            ))}
-          </div>
-          {/* </Carousel> */}
+          {albums && (
+            <Slide autoplay={false} infinite={false} easing="ease" responsive={responsiveSettings}>
+              {/* <div className="flex "> */}
+                {albums?.filter(album => album.isPublished === true).map(album => (
+                  <Link href={`/album/${album.id}`} key={album.id} className='no-underline'  >
+                    <Image
+                      src={album.cover}
+                      alt={album.nume}
+                      width={240}
+                      height={320}
+                      className="shadow-lg p-2 rounded-2xl object-cover sm:w-full sm:h-full w-60 h-80"
+                    />
+                    <h2 className="text-center text-sm no-underline font-serif italic text-slate-500">{album.nume}</h2>
+                  </Link>
+                ))}
+              {/* </div> */}
+            </Slide>
+          )}
         </div>
       </Main>
     </div>
